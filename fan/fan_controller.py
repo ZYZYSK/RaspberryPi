@@ -16,11 +16,11 @@ def create_log(is_debug: bool = False) -> logging.Logger:
     # create directory 'log' if not exists
     os.makedirs('log', exist_ok=True)
     # set save log path
-    handler_log_path = logging.FileHandler(datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.log"))
-    logger.addHandler(handler_log_path)
+    log_handler = logging.FileHandler(datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.log"))
     # set log format
-    handler_log_format = logging.Formatter(fmt="%(asctime)s %(levelname)s %(filename)s %(funcName)s  %(lineno)s : %(message)s")
-    logger.addHandler(handler_log_format)
+    log_format = logging.Formatter(fmt="%(asctime)s %(levelname)s %(filename)s %(funcName)s  %(lineno)s : %(message)s")
+    log_handler.setFormatter(log_format)
+    logger.addHandler(log_handler)
     return logger
 
 
@@ -40,7 +40,7 @@ class PWM:
         except Exception as e:
             self.logger.error(e)
 
-    def measure_temperature(self):
+    def measure_temperature(self) -> None:
         # for debugging
         self.logger.debug('Measureing temperature...')
         # measure temperature
@@ -63,7 +63,7 @@ class PWM:
         # for debugging
         self.logger.debug(f'Successfully changed fan power to {fan_power}.')
 
-    def loop(self):
+    def loop(self) -> None:
         try:
             # measure temperature
             self.measure_temperature()
