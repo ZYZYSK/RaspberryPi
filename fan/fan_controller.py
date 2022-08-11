@@ -14,7 +14,7 @@ def create_log(is_debug: bool = False) -> logging.Logger:
     if is_debug:
         logger.setLevel(logging.DEBUG)
     # create directory 'log' if not exists
-    os.makedirs('logs', exist_ok=True)
+    os.makedirs('/opt/fan/logs', exist_ok=True)
     # set save log path
     log_handler = logging.FileHandler(datetime.datetime.now().strftime("/opt/fan/logs/%Y_%m_%d_%H_%M_%S.log"))
     # set log format
