@@ -16,7 +16,7 @@ def create_log(is_debug: bool = False) -> logging.Logger:
     # create directory 'log' if not exists
     os.makedirs('log', exist_ok=True)
     # set save log path
-    log_handler = logging.FileHandler(datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.log"))
+    log_handler = logging.FileHandler(datetime.datetime.now().strftime("log/%Y_%m_%d_%H_%M_%S.log"))
     # set log format
     log_format = logging.Formatter(fmt="%(asctime)s %(levelname)s %(filename)s %(funcName)s  %(lineno)s : %(message)s")
     log_handler.setFormatter(log_format)
@@ -95,3 +95,4 @@ if __name__ == '__main__':
 
     # init
     pwm = PWM(INTERVAL, PIN, logger)
+    pwm.loop()
