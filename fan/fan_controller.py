@@ -53,11 +53,11 @@ class PWM:
     def run(self, fan) -> None:
         # for debugging
         self.logger.debug('Changing fan power...')
-        # change fun power
-        fan_power = 20 + 4 * (self.temperature - 50)
+        # change fan power
+        fan_power = 20 + 4 * (self.temperature - 55)
         if self.temperature < 50:
             fan_power = 0
-        if self.temperature > 70:
+        if self.temperature > 75:
             fan_power = 100
         fan.ChangeDutyCycle(fan_power)
         # for debugging
@@ -65,12 +65,13 @@ class PWM:
 
     def loop(self) -> None:
         try:
-            # measure temperature
-            self.measure_temperature()
             fan = GPIO.PWM(self.pin, 50)
             fan.start(20)
             self.logger.debug('Successfully started PWM.')
             while True:
+                # measure temperature
+                self.measure_temperature()
+                # change fan power
                 self.run(fan)
                 time.sleep(self.interval)
         except Exception as e:
