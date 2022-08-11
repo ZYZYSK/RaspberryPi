@@ -1,0 +1,10 @@
+{
+    "interval": 30,
+    "pin": 14,
+    "is_debug": true,
+    "_comment": {
+        "interval": "測定間隔(秒)",
+        "pin": "ファンが接続されているピン番号",
+        "is_debug": "デバッグモードかどうか(true or false)"
+    }
+}
