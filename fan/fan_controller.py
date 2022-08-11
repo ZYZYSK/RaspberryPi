@@ -16,7 +16,7 @@ def create_log(is_debug: bool = False) -> logging.Logger:
     # create directory 'log' if not exists
     os.makedirs('logs', exist_ok=True)
     # set save log path
-    log_handler = logging.FileHandler(datetime.datetime.now().strftime("logs/%Y_%m_%d_%H_%M_%S.log"))
+    log_handler = logging.FileHandler(datetime.datetime.now().strftime("/opt/fan/logs/%Y_%m_%d_%H_%M_%S.log"))
     # set log format
     log_format = logging.Formatter(fmt="%(asctime)s %(levelname)s %(filename)s %(funcName)s  %(lineno)s : %(message)s")
     log_handler.setFormatter(log_format)
@@ -84,7 +84,7 @@ class PWM:
 
 if __name__ == '__main__':
     # load settings
-    _settings = open('settings.json', 'r')
+    _settings = open('/opt/fan/settings.json', 'r')
     settings = json.load(_settings)
     INTERVAL = settings['interval']
     PIN = settings['pin']
