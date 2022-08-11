@@ -6,7 +6,7 @@ if [ -e /opt/fan/fan_controller.py ]; then
     sudo rm -rf /opt/fan/fan_controller.py
 fi
 
-sudo mkdir /opt/fan
+sudo mkdir -p /opt/fan
 sudo cp ./fan_controller.py /opt/fan/fan_controller.py
 sudo cp ./settings.json /opt/fan/settings.json
 sudo cp ./fan_controller.service /etc/systemd/system/fan_controller.service
