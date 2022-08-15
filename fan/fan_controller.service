@@ -3,7 +3,7 @@ Description = fan_controller
 
 [Service]
 WorkingDirectory = /opt/fan
-ExecStart = fan_controller.py
+ExecStart = /opt/fan/fan_controller.py
 Restart = always
 Type = simple
 
