@@ -2,7 +2,8 @@
 Description = fan_controller
 
 [Service]
-ExecStart = /usr/bin/sudo /usr/bin/python /opt/fan/fan_controller.py
+WorkingDirectory = /opt/fan
+ExecStart = fan_controller.py
 Restart = always
 Type = simple
 
